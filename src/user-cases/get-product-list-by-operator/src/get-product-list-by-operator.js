@@ -1,11 +1,19 @@
-module.exports = function buildGetProductListByOperator({ createOptions }) {
-  if (!createOptions) {
-    throw new Error("buildGetProductListByOperator must have createOptions");
+module.exports = function buildGetProductListByOperatorBuilder({
+  getProductListByOperatorAPI,
+}) {
+  if (!getProductListByOperatorAPI) {
+    throw new Error(
+      "buildGetProductListByOperatorBuilder must have getProductListByOperatorAPI"
+    );
   }
-  return async function getProductListByOperator({ operator }) {
+  return function getProductListByOperatorBuilder({ operator }) {
     if (!operator) {
-      throw new Error("getProductListByOperator must have operator");
+      throw new Error("getProductListByOperatorBuilder must have operator");
     }
-    const options = createOptions({ operator });
+
+    return async function getProductListByOperator() {
+      const productList = await getProductListByOperatorAPI({ operator });
+      return productList;
+    };
   };
 };

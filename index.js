@@ -6,4 +6,6 @@ module.exports = function ({ ESAJ_ACCESS_TOKEN }) {
   const useCases = require("./src")({
     ESAJ_ACCESS_TOKEN,
   });
+
+  return useCases;
 };

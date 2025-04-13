@@ -1,12 +1,9 @@
-const createGetProductListByOperatorOptions = require("./src/create-get-product-list-by-operator-options");
-const buildGetProductListByOperator = require("./src/get-product-list-by-operator");
-const translateGetProductListByOperatorResponse = require("./src/translate-get-product-list-by-operator-response");
+const buildGetProductListByOperatorBuilder = require("./src/get-product-list-by-operator");
 
-module.exports = function ({ getAuthorizedHeader }) {
-  const getProductListByOperator = buildGetProductListByOperator({
-    createOptions: createGetProductListByOperatorOptions,
-    translateResponse: translateGetProductListByOperatorResponse,
+module.exports = function ({ getProductListByOperatorAPI }) {
+  const getProductListByOperatorBuilder = buildGetProductListByOperatorBuilder({
+    getProductListByOperatorAPI,
   });
 
-  return getProductListByOperator;
+  return getProductListByOperatorBuilder;
 };
