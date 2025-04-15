@@ -9,6 +9,7 @@ module.exports = function buildGetAuthorizedHeader({ ESAJ_ACCESS_TOKEN }) {
     const headers = {
       Authorization: `${authorizationValue}`,
       "Content-Type": "application/json",
+      Accept: "application/json",
     };
 
     return headers;
