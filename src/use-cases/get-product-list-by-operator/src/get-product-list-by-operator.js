@@ -1,19 +1,17 @@
-module.exports = function buildGetProductListByOperatorBuilder({
+module.exports = function buildGetProductListByOperator({
   getProductListByOperatorAPI,
 }) {
   if (!getProductListByOperatorAPI) {
     throw new Error(
-      "buildGetProductListByOperatorBuilder must have getProductListByOperatorAPI"
+      "buildGetProductListByOperator must have getProductListByOperatorAPI"
     );
   }
-  return function getProductListByOperatorBuilder({ operator }) {
+  return async function getProductListByOperator({ operator }) {
     if (!operator) {
-      throw new Error("getProductListByOperatorBuilder must have operator");
+      throw new Error("getProductListByOperator must have operator");
     }
 
-    return async function getProductListByOperator() {
-      const productList = await getProductListByOperatorAPI({ operator });
-      return productList;
-    };
+    const productList = await getProductListByOperatorAPI({ operator });
+    return productList;
   };
 };

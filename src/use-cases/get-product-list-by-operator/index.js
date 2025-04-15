@@ -1,9 +1,9 @@
-const buildGetProductListByOperatorBuilder = require("./src/get-product-list-by-operator");
+const buildGetProductListByOperator = require("./src/get-product-list-by-operator");
 
 module.exports = function ({ getProductListByOperatorAPI }) {
-  const getProductListByOperatorBuilder = buildGetProductListByOperatorBuilder({
+  const getProductListByOperator = buildGetProductListByOperator({
     getProductListByOperatorAPI,
   });
 
-  return getProductListByOperatorBuilder;
+  return getProductListByOperator;
 };

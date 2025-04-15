@@ -1,12 +1,17 @@
 module.exports = function ({ provider, models }) {
   const getProductListByOperatorBuilder =
-    require("./get-product-list-by-operator")({
+    require("./get-product-list-by-operator-builder")({
       getProductListByOperatorAPI: provider.getProductListByOperator,
     });
 
   const topupBuilder = require("./topup")({
     topupAPI: provider.topup,
   });
+
+  const getProductListByOperator = require("./get-product-list-by-operator")({
+    getProductListByOperatorAPI: provider.getProductListByOperator,
+  });
+
   const irancellServices = require("./irancell")({
     getProductListByOperatorBuilder,
     topupBuilder,
@@ -40,6 +45,7 @@ module.exports = function ({ provider, models }) {
     rightel: rightelServices,
     shatel: shatelServices,
     aptel: aptelServices,
+    getProductListByOperator,
   });
 
   return services;
