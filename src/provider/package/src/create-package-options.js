@@ -30,17 +30,16 @@ module.exports = function buildCreatePackageOptions({ authorizedHeader }) {
       throw new Error("createPackageOptions must have webservice_code");
     }
 
-    if (!operator_type) {
-      throw new Error("createPackageOptions must have operator_type");
-    }
-
     let jsonData = {
-      table: "product",
-      items: {
-        operator: operator,
-        pagination: "false",
-      },
+      product_id,
+      mobile,
+      price,
+      webservice_code,
     };
+
+    if (operator_type) {
+      jsonData.operator_type = operator_type;
+    }
 
     const body = JSON.stringify(jsonData);
 

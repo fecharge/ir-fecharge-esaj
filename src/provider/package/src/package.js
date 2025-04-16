@@ -41,9 +41,6 @@ module.exports = function buildPackage({
       throw new Error("package must have webservice_code");
     }
 
-    if (!operator_type) {
-      throw new Error("package must have operator_type");
-    }
     const options = await createOptions({
       product_id,
       mobile,
