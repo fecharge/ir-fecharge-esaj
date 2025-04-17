@@ -9,7 +9,7 @@ module.exports = async function ({
     operator: "shatel",
   });
 
-  //await getProductListByOperator();
+  await getProductListByOperator();
 
   const directCharge = topupBuilder({
     operator_type: 1,

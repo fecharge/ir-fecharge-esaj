@@ -15,6 +15,11 @@ module.exports = async function ({ provider, models }) {
       setOperatorProductListInMemoryCache,
     });
 
+  const getProductListByOperator = require("./get-product-list-by-operator")({
+    getProductListByOperatorAPI: provider.getProductListByOperator,
+    setOperatorProductListInMemoryCache,
+  });
+
   const findProductInOperatorProductListBuilder =
     require("./find-product-in-operator-product-list-builder")({
       cacheStorage,
@@ -27,10 +32,6 @@ module.exports = async function ({ provider, models }) {
   const packageBuilder = require("./package")({
     packageAPI: provider.package,
     findProductInOperatorProductListBuilder,
-  });
-
-  const getProductListByOperator = require("./get-product-list-by-operator")({
-    getProductListByOperatorAPI: provider.getProductListByOperator,
   });
 
   const irancellServices = await require("./irancell")({
